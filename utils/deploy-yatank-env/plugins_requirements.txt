@@ -1,0 +1,11 @@
+TornadIO2==0.0.4
+hypchat==0.15
+Jinja2==2.8
+yatank-hipchat==0.1.0.4
+yatank-salts==0.1.4.1
+yatank-report==0.2.2.2
+yatank-sputnikonline==0.0.15.2
+yatank-mail==0.0.1.1
+yatank-collect==0.0.0.1
+yatank-vegeta==0.0.0.3
+yatank-graphite==0.0.0.1

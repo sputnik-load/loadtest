@@ -1,0 +1,914 @@
+{
+  "id": null,
+  "title": "tank-tpl-details",
+  "originalTitle": "tank-tpl-details",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": true,
+  "rows": [
+    {
+      "title": "test",
+      "height": "600px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "datasource": "graphite",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "ms",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": true,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": true,
+            "alignAsTable": true,
+            "sortDesc": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": true
+          },
+          "targets": [
+            {
+              "target": "alias(load-tests.[[system]].overall.quantiles.100_0, 'Quantile 100%')",
+              "hide": false,
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.markers.$query_group_name.RPS",
+              "query": "select mean(value) from /load-tests\\.$system\\.markers\\.$query_group_name\\..*\\.RPS/ where value > -1 and $timeFilter group by time($interval) fill(null) order asc",
+              "alias": "RPS $4",
+              "rawQuery": true,
+              "interval": "1s",
+              "fill": "null"
+            },
+            {
+              "target": "alias(load-tests.[[system]].overall.quantiles.99_0, 'Quantile 99%')",
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.markers.$query_group_name.planned_requests",
+              "query": "select mean(value) from /load-tests\\.$system\\.markers\\.$query_group_name\\..*\\.planned_requests/ where value > -1 and $timeFilter group by time($interval) fill(null) order asc",
+              "alias": "planned RPS $4",
+              "interval": "1s",
+              "fill": "null",
+              "hide": true,
+              "rawQuery": true
+            },
+            {
+              "target": "alias(load-tests.[[system]].overall.quantiles.90_0, 'Quantile 90%')",
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.markers.$query_group_name.avg_response_time",
+              "query": "select mean(value) from /load-tests\\.$system\\.markers\\.$query_group_name\\..*\\.avg_response_time/ where value > -1 and $timeFilter group by time($interval) fill(null) order asc",
+              "alias": "avg response time {$4}",
+              "interval": "1s",
+              "fill": "null",
+              "hide": false,
+              "rawQuery": true
+            },
+            {
+              "target": "alias(load-tests.[[system]].overall.quantiles.50_0, 'Quantile 50%')",
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.markers.$query_group_name.quantiles.50_0",
+              "query": "select mean(value) from /load-tests\\.$system\\.markers\\.$query_group_name\\..*\\.quantiles.50_0/ where value > -1 and $timeFilter group by time($interval) fill(null) order asc",
+              "alias": "quantile 50% $4",
+              "interval": "1s",
+              "fill": "null",
+              "hide": false,
+              "rawQuery": true
+            },
+            {
+              "target": "alias(load-tests.[[system]].overall.avg_response_time, 'Avg Response Time')",
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.markers.$query_group_name.quantiles.90_0",
+              "query": "select mean(value) from /load-tests\\.$system\\.markers\\.$query_group_name\\..*\\.quantiles.90_0/ where value > -1 and $timeFilter group by time($interval) fill(null) order asc",
+              "alias": "quantile 90% $4",
+              "interval": "1s",
+              "fill": "null",
+              "hide": false,
+              "rawQuery": true
+            },
+            {
+              "target": "alias(load-tests.[[system]].overall.RPS, 'RPS ')",
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.markers.$query_group_name.quantiles.99_0",
+              "query": "select mean(value) from /load-tests\\.$system\\.markers\\.$query_group_name\\..*\\.quantiles.99_0/ where value > -1 and $timeFilter group by time($interval) fill(null) order asc",
+              "alias": "quantile 99% $4",
+              "interval": "1s",
+              "fill": "null",
+              "hide": false,
+              "rawQuery": true
+            }
+          ],
+          "aliasColors": {},
+          "title": "overall quantiles {[[system]]}",
+          "id": 1,
+          "seriesOverrides": [
+            {
+              "alias": "RPS",
+              "yaxis": 2
+            },
+            {
+              "alias": "planned RPS",
+              "yaxis": 2
+            }
+          ],
+          "links": []
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "test",
+      "height": "400px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "datasource": "graphite",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 1,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": true,
+            "max": true,
+            "current": true,
+            "total": true,
+            "avg": true,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": true
+          },
+          "targets": [
+            {
+              "target": "averageAbove(aliasSub(load-tests.[[system]].overall.http_codes.*, '^.*http_codes\\.(\\d+)', 'HTTP code \\1'), -1)",
+              "hide": false,
+              "function": "mean",
+              "column": "value",
+              "series": "",
+              "query": "select mean(value) from /load-tests\\.$system\\.overall\\.http_codes\\..+/ where $timeFilter group by time($interval) fill(null) order asc",
+              "rawQuery": true,
+              "interval": "1s",
+              "alias": "HTTP code $4",
+              "fill": "0"
+            }
+          ],
+          "aliasColors": {},
+          "title": "overall HTTP status codes {[[system]]}",
+          "id": 2,
+          "seriesOverrides": [
+            {
+              "points": true,
+              "alias": "/HTTP code [345][0-9]*/i",
+              "pointradius": 1
+            }
+          ],
+          "leftYAxisLabel": "rps",
+          "links": []
+        },
+        {
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "datasource": "graphite",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": true,
+            "max": true,
+            "current": true,
+            "total": true,
+            "avg": true,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": true
+          },
+          "targets": [
+            {
+              "target": "averageAbove(aliasSub(load-tests.[[system]].overall.net_codes.*, '^.*net_codes\\.(\\d+)', 'NET code \\1'), -1)",
+              "function": "mean",
+              "column": "value",
+              "series": "",
+              "query": "select mean(value) from /load-tests\\.$system\\.overall\\.net_codes\\..+/ where $timeFilter group by time($interval) fill(null) order asc",
+              "rawQuery": true,
+              "alias": "NET code $4",
+              "interval": "1s"
+            }
+          ],
+          "aliasColors": {},
+          "title": "overall NET codes {[[system]]}",
+          "id": 3,
+          "seriesOverrides": [
+            {
+              "alias": "/NET code [1-9][0-9]*/i",
+              "points": true,
+              "pointradius": 1
+            }
+          ],
+          "leftYAxisLabel": "rps",
+          "links": []
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "New row",
+      "height": "450px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "datasource": "graphite",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "ms",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": true,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": true,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": true
+          },
+          "targets": [
+            {
+              "target": "alias(load-tests.[[system]].cumulative.quantiles.100_0, 'Quantile 100%')",
+              "hide": false,
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.cumulative.quantiles.50_0",
+              "query": "select mean(value) from \"load-tests.$system.cumulative.quantiles.50_0\" where $timeFilter group by time($interval) fill(null) order asc",
+              "interval": "1s",
+              "alias": "quantile 50%",
+              "fill": "null"
+            },
+            {
+              "target": "alias(load-tests.[[system]].cumulative.quantiles.99_0, 'Quantile 99%')",
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.cumulative.quantiles.90_0",
+              "query": "select mean(value) from \"load-tests.$system.cumulative.quantiles.90_0\" where $timeFilter group by time($interval) fill(null) order asc",
+              "alias": "quantile 90%",
+              "fill": "null",
+              "interval": "1s"
+            },
+            {
+              "target": "alias(load-tests.[[system]].cumulative.quantiles.98_0, 'Quantile 98%')",
+              "hide": false,
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.cumulative.quantiles.99_0",
+              "alias": "quantile 99%",
+              "query": "select mean(value) from \"load-tests.$system.cumulative.quantiles.99_0\" where $timeFilter group by time($interval) fill(null) order asc",
+              "fill": "null",
+              "interval": "1s"
+            },
+            {
+              "target": "alias(load-tests.[[system]].overall.RPS,\"RPS \")",
+              "function": "mean",
+              "column": "value",
+              "hide": false,
+              "series": "load-tests.$system.overall.RPS",
+              "alias": "RPS",
+              "query": "select mean(value) from \"load-tests.$system.overall.RPS\" where $timeFilter group by time($interval) fill(null) order asc",
+              "fill": "null",
+              "interval": "1s"
+            }
+          ],
+          "aliasColors": {},
+          "title": "cumulative quantiles {[[system]]}",
+          "id": 4,
+          "seriesOverrides": [
+            {
+              "alias": "RPS",
+              "yaxis": 2
+            },
+            {
+              "alias": "quantile 99%",
+              "linewidth": 3
+            }
+          ],
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": "test",
+      "height": "350px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "datasource": "graphite",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": true,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": true,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": true
+          },
+          "targets": [
+            {
+              "target": "alias(load-tests.[[system]].overall.active_threads, 'Active Threads')",
+              "hide": false,
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.overall.active_threads",
+              "query": "select mean(value) from \"load-tests.$system.overall.active_threads\" where $timeFilter group by time($interval) fill(null) order asc",
+              "rawQuery": false,
+              "alias": "Threads",
+              "fill": "null",
+              "interval": "1s"
+            },
+            {
+              "target": "alias(load-tests.[[system]].overall.RPS,\"RPS \")",
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.overall.RPS",
+              "query": "select mean(value) from \"load-tests.$system.overall.RPS\" where $timeFilter group by time($interval) fill(null) order asc",
+              "alias": "RPS",
+              "fill": "null",
+              "interval": "1s"
+            }
+          ],
+          "aliasColors": {},
+          "title": "active Threads {[[system]]}",
+          "id": 5,
+          "seriesOverrides": [
+            {
+              "alias": "RPS ",
+              "yaxis": 2
+            }
+          ],
+          "links": []
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "test",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "datasource": "graphite",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": true,
+            "max": true,
+            "current": true,
+            "total": true,
+            "avg": false
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "alias(load-tests.[[system]].cumulative.total_count, 'Total Count')",
+              "hide": false,
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.cumulative.total_count",
+              "query": "select mean(value) from \"load-tests.$system.cumulative.total_count\" where $timeFilter group by time($interval) fill(null) order asc",
+              "alias": "total requests count",
+              "fill": "null",
+              "interval": "1s"
+            }
+          ],
+          "aliasColors": {},
+          "title": "total requests {[[system]]}",
+          "id": 6,
+          "seriesOverrides": [
+            {
+              "alias": "total requests count",
+              "linewidth": 2
+            }
+          ],
+          "links": []
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "test",
+      "height": "350px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "datasource": "graphite",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": true,
+            "max": true,
+            "current": false,
+            "total": true,
+            "avg": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": true
+          },
+          "targets": [
+            {
+              "target": "alias(load-tests.[[system]].overall.input, 'Input Bytes')",
+              "hide": false,
+              "function": "mean",
+              "column": "value",
+              "series": "load-tests.$system.overall.input",
+              "query": "select mean(value) from \"load-tests.$system.overall.input\" where $timeFilter group by time($interval) fill(null) order asc",
+              "alias": "input bytes",
+              "fill": "null",
+              "interval": "1s"
+            },
+            {
+              "target": "alias(load-tests.[[system]].overall.output, 'Output Bytes')",
+              "function": "mean",
+              "column": "value",
+              "alias": "output bytes",
+              "series": "load-tests.$system.overall.output",
+              "query": "select mean(value) from \"load-tests.$system.overall.output\" where $timeFilter group by time($interval) fill(null) order asc",
+              "fill": "null",
+              "interval": "1s"
+            }
+          ],
+          "aliasColors": {},
+          "title": "other overall stats {[[system]]}",
+          "id": 7,
+          "seriesOverrides": [],
+          "links": []
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "test",
+      "height": "350px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "datasource": "graphite",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "ms",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": true,
+          "pointradius": 1,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": true,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": true,
+            "alignAsTable": true,
+            "sortDesc": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "null",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": true
+          },
+          "targets": [
+            {
+              "target": "aliasByMetric(averageAbove(load-tests.[[system]].overall.avg_*, -1))",
+              "hide": false,
+              "function": "mean",
+              "column": "value",
+              "series": "",
+              "query": "select mean(value) from /load-tests\\.$system\\.overall\\.avg_.*/ where $timeFilter group by time($interval) fill(null) order asc",
+              "rawQuery": true,
+              "alias": "$3",
+              "interval": "1s"
+            }
+          ],
+          "aliasColors": {},
+          "title": "overall avg times {[[system]]}",
+          "id": 8,
+          "seriesOverrides": [],
+          "links": []
+        }
+      ],
+      "notice": false
+    }
+  ],
+  "nav": [
+    {
+      "type": "timepicker",
+      "collapse": false,
+      "notice": false,
+      "enable": true,
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "3h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "15s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "now": false
+    }
+  ],
+  "time": {
+    "from": "2015-04-01T13:09:21.000Z",
+    "to": "2015-04-01T16:40:26.000Z",
+    "now": false
+  },
+  "templating": {
+    "list": [
+      {
+        "type": "query",
+        "name": "system",
+        "query": "list series",
+        "includeAll": false,
+        "current": {
+          "text": "sys",
+          "value": "sys"
+        },
+        "datasource": null,
+        "allFormat": "glob",
+        "options": [
+          {
+            "text": "sys1",
+            "value": "sys1"
+          },
+          {
+            "text": "sys2",
+            "value": "sys2"
+          },
+          {
+            "text": "sys3",
+            "value": "sys3"
+          }
+        ],
+        "refresh": true,
+        "regex": "/load-tests\\.(.+?)\\.overall.*/"
+      },
+      {
+        "type": "query",
+        "datasource": null,
+        "refresh_on_load": false,
+        "name": "query_group_name",
+        "options": [
+          {
+            "text": "news",
+            "value": "news"
+          }
+        ],
+        "includeAll": false,
+        "allFormat": "regex values",
+        "query": "list series",
+        "current": {
+          "text": "med",
+          "value": "med"
+        },
+        "regex": "load-tests\\.$system\\.markers\\.(.*?)\\..*?\\.quantiles\\..*"
+      }
+    ],
+    "enable": true
+  },
+  "annotations": {
+    "list": [],
+    "enable": false
+  },
+  "refresh": false,
+  "version": 6,
+  "hideAllLegends": false
+}

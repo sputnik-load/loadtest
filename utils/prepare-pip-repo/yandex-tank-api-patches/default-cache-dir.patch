@@ -1,0 +1,8 @@
+diff --git a/yandex_tank_api/config/00-tank-api-defaults.ini b/yandex_tank_api/config/00-tank-api-defaults.ini
+index 58932a9..7bb0a33 100644
+--- a/yandex_tank_api/config/00-tank-api-defaults.ini
++++ b/yandex_tank_api/config/00-tank-api-defaults.ini
+@@ -1,2 +1,2 @@
+ [phantom]
+-cache_dir=/var/lib/yandex-tank-api/stpd-cache
++cache_dir=/data/qa/stpd.cache

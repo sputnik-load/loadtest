@@ -1,0 +1,24 @@
+--- orig/yandextank/plugins/Monitoring/collector.py	2015-12-16 12:13:33.581322615 +0300
++++ new/yandextank/plugins/Monitoring/collector.py	2015-12-16 12:17:00.448301758 +0300
+@@ -86,15 +86,17 @@
+     def send_file(self, local_path, remote_path):
+         logger.info("Sending [{local}] to {host}:[{remote}]".format(
+             local=local_path, host=self.host, remote=remote_path))
+-        with self.connect() as client, client.open_sftp() as sftp:
+-            result = sftp.put(local_path, remote_path)
++        with self.connect() as client:
++            with client.open_sftp() as sftp:
++                result = sftp.put(local_path, remote_path)
+         return result
+ 
+     def get_file(self, remote_path, local_path):
+         logger.info("Receiving from {host}:[{remote}] to [{local}]".format(
+             local=local_path, host=self.host, remote=remote_path))
+-        with self.connect() as client, client.open_sftp() as sftp:
+-            result = sftp.get(remote_path, local_path)
++        with self.connect() as client:
++            with client.open_sftp() as sftp:
++                result = sftp.get(remote_path, local_path)
+         return result
+ 
+     def async_session(self, cmd):

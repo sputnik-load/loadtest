@@ -1,0 +1,12 @@
+diff --git a/yandextank/plugins/JMeter/plugin.py b/yandextank/plugins/JMeter/plugin.py
+index a200cfc..25a0bd7 100644
+--- a/yandextank/plugins/JMeter/plugin.py
++++ b/yandextank/plugins/JMeter/plugin.py
+@@ -199,6 +199,7 @@ class JMeterReader(AbstractReader):
+         "org.apache.commons.net.MalformedServerReplyException" : 71,
+         "org.apache.http.NoHttpResponseException": 32,
+         "java.io.InterruptedIOException": 32,
++        "java.net.URISyntaxException": 22,
+     }
+ 
+     def __init__(self, owner, jmeter):

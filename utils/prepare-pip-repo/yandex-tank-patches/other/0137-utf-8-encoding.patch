@@ -1,0 +1,17 @@
+---
+ tank.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tank.py b/tank.py
+index e6152e3..d98208c 100755
+--- a/tank.py
++++ b/tank.py
+@@ -1,4 +1,5 @@
+ #!/usr/bin/python
++# -*- coding: utf-8 -*-
+ import sys
+ import yandextank.core.cli
+ 
+-- 
+1.9.5.msysgit.1
+

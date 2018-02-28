@@ -1,0 +1,82 @@
+diff -ruN props-original/hc.parameters props-current/hc.parameters
+--- props-original/hc.parameters	2014-11-05 20:17:46.000000000 +0300
++++ props-current/hc.parameters	2014-12-04 12:11:58.000000000 +0300
+@@ -43,4 +43,5 @@
+ 
+ # Default value since JMeter 2.11, 
+ # also uncomment hc.parameters.file=hc.parameters to enable this check:
+-#http.connection.stalecheck$Boolean=false
+\ В конце файла нет новой строки
++#http.connection.stalecheck$Boolean=false
++http.connection.stalecheck$Boolean=true
+diff -ruN props-original/httpclient.parameters props-current/httpclient.parameters
+--- props-original/httpclient.parameters	2014-11-05 20:17:46.000000000 +0300
++++ props-current/httpclient.parameters	2014-12-04 12:12:04.000000000 +0300
+@@ -42,4 +42,5 @@
+ 
+ #http.protocol.reject-relative-redirect$Boolean=true
+ 
+-#http.authentication.preemptive$Boolean=true
+\ В конце файла нет новой строки
++#http.authentication.preemptive$Boolean=true
++http.connection.stalecheck$Boolean=true
+diff -ruN props-original/jmeter.properties props-current/jmeter.properties
+--- props-original/jmeter.properties	2014-11-05 20:17:46.000000000 +0300
++++ props-current/jmeter.properties	2015-07-27 13:11:55.000000000 +0300
+@@ -284,7 +284,7 @@
+ 
+ # If the filename contains  paired single-quotes, then the name is processed
+ # as a SimpleDateFormat format applied to the current date, for example:
+-#log_file='jmeter_'yyyyMMddHHmmss'.tmp'
++log_file='jmeter_'yyyyMMddHHmmss'.tmp'
+ 
+ # N.B. When JMeter starts, it sets the system property:
+ #    org.apache.commons.logging.Log
+@@ -767,13 +767,13 @@
+ #summariser.name=summary
+ #
+ # interval between summaries (in seconds) default 30 seconds
+-#summariser.interval=30
++summariser.interval=10
+ #
+ # Write messages to log file
+-#summariser.log=true
++summariser.log=true
+ #
+ # Write messages to System.out
+-#summariser.out=true
++summariser.out=false
+ 
+ #---------------------------------------------------------------------------
+ # BeanShell configuration
+@@ -930,7 +930,7 @@
+  
+ # CookieManager behaviour - check received cookies are valid before storing them?
+ # Default is true. Use false to revert to previous behaviour
+-#CookieManager.check.cookies=true
++CookieManager.check.cookies=false
+ 
+ # (2.0.3) JMeterThread behaviour has been changed to set the started flag before
+ # the controllers are initialised. This is so controllers can access variables earlier. 
+diff -ruN props-original/user.properties props-current/user.properties
+--- props-original/user.properties	2014-11-05 20:17:46.000000000 +0300
++++ props-current/user.properties	2015-12-09 12:38:40.000000000 +0300
+@@ -62,3 +62,18 @@
+ 
+ # Enable Proxy request debug
+ #log_level.jmeter.protocol.http.proxy.HttpRequestHdr=DEBUG
++jmeter.save.saveservice.autoflush=true
++sample_variables=var1,var2,var3,var4,var5,var6,var7,var8,var9,var10,var11,var12,var13,var14,var15,var16,var17
++#sample_variables=var1,var2,var3,var4,var5
++
++# РґР»СЏ HttpClient 4
++httpclient4.retrycount=1
++# stale check
++hc.parameters.file=hc.parameters
++# РїРѕСЏРІРёР»РѕСЃСЊ РІ JMeter 2.12
++httpclient4.idletimeout=15000
++ 
++# РґР»СЏ HttpClient 3
++httpclient3.retrycount=1
++# stale check
++httpclient.parameters.file=httpclient.parameters

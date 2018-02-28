@@ -1,0 +1,16 @@
+diff --git a/yandex_tank_api/config/99-tank-api-override.ini b/yandex_tank_api/config/99-tank-api-override.ini
+index 9f91db1..3bf3c13 100644
+--- a/yandex_tank_api/config/99-tank-api-override.ini
++++ b/yandex_tank_api/config/99-tank-api-override.ini
+@@ -5,7 +5,10 @@
+ # Switching off console-specific plugins
+ [tank]
+ plugin_tips=
+-plugin_console=
++plugin_console=yandextank.plugins.ConsoleOnline
++
++[console]
++short_only = 1
+ 
+ [tank]
+ # This is the only way to obtain tank config under API

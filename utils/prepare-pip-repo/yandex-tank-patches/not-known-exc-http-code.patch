@@ -1,0 +1,13 @@
+diff --git a/yandextank/plugins/JMeter/plugin.py b/yandextank/plugins/JMeter/plugin.py
+index a200cfc..f515e7b 100644
+--- a/yandextank/plugins/JMeter/plugin.py
++++ b/yandextank/plugins/JMeter/plugin.py
+@@ -363,7 +363,7 @@ class JMeterReader(AbstractReader):
+         if exc in self.KNOWN_EXC.keys():
+             return '0'
+         else:
+-            return '500'
++            return '-1'
+ 
+ 
+ # ===============================================================================

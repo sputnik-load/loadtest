@@ -1,0 +1,12 @@
+diff --git a/yandextank/plugins/JMeter/plugin.py b/yandextank/plugins/JMeter/plugin.py
+index b88ee86..756da42 100644
+--- a/yandextank/plugins/JMeter/plugin.py
++++ b/yandextank/plugins/JMeter/plugin.py
+@@ -198,6 +198,7 @@ class JMeterReader(object):
+         "java.net.SocketException": 32,
+         "java.net.SocketTimeoutException": 110,
+         "java.net.UnknownHostException": 14,
++        "java.io.FileNotFoundException": 2,
+         "java.io.IOException": 5,
+         "java.io.EOFException": 104,
+         "org.apache.http.conn.ConnectTimeoutException": 110,

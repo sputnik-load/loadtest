@@ -1,0 +1,20 @@
+# .pypirc file
+[distutils]
+index-servers =
+#  pypi
+internal
+
+#[pypi]
+#username:<your_pypi_username>
+#password:<your_pypi_passwd>
+
+[internal]
+repository: http://"<PyPI_HOST>":8080
+username: ltbot
+password: ltbot
+[zest.releaser]
+create-wheel = yes
+
+# .pydistutils.cfg file
+[easy_install]
+find_links = http://"<PyPI_HOST>":8080/dist/

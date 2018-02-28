@@ -1,0 +1,20 @@
+---
+ Tank/Plugins/GraphiteUploader.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Tank/Plugins/GraphiteUploader.py b/Tank/Plugins/GraphiteUploader.py
+index c601479..15b51ff 100644
+--- a/Tank/Plugins/GraphiteUploader.py
++++ b/Tank/Plugins/GraphiteUploader.py
+@@ -117,7 +117,7 @@ class GraphiteClient(object):
+         '''publish results to Graphite'''
+         self.log.debug("Trying to send metrics to server...")
+         try:
+-            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
++            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+             sock.connect((self.address, int(self.port)))
+             for metric in results.keys():
+                 sock.sendall("%s.%s\t%s\t%d\n" % \
+-- 
+1.9.5.msysgit.1
+

@@ -1,0 +1,23 @@
+---
+ tank.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+ create mode 100755 tank.py
+
+diff --git a/tank.py b/tank.py
+new file mode 100755
+index 0000000..e6152e3
+--- /dev/null
++++ b/tank.py
+@@ -0,0 +1,9 @@
++#!/usr/bin/python
++import sys
++import yandextank.core.cli
++
++# Если выскакивает ошибка "ImportError: No module named importlib", то установи либу вот так:
++# pip install --use-wheel --no-index --find-links=/data/qa/wheelhouse --user --upgrade importlib
++
++if __name__ == '__main__':
++    sys.exit(yandextank.core.cli.main())
+-- 
+1.9.5.msysgit.1
+

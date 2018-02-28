@@ -1,0 +1,13 @@
+diff --git a/yandextank/plugins/GraphiteUploader/plugin.py b/yandextank/plugins/GraphiteUploader/plugin.py
+index 4a0392e..f5232a2 100644
+--- a/yandextank/plugins/GraphiteUploader/plugin.py
++++ b/yandextank/plugins/GraphiteUploader/plugin.py
+@@ -144,7 +144,7 @@ class GraphiteClient(object):
+         '''publish results to Graphite'''
+         self.log.debug("Trying to send metrics to server...")
+         try:
+-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
++            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+             sock.connect((self.address, int(self.port)))
+             for metric in results.keys():
+                 sock.sendall(

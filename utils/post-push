@@ -1,0 +1,12 @@
+#!/bin/sh
+
+VENV=/data/qa/ltbot/venv
+
+VENV_ACTIVATE="${VENV}/bin/activate"
+[ ! -s "${VENV_ACTIVATE}" ] && echo "Error: ${VENV_ACTIVATE} not found" && exit 1
+. ${VENV_ACTIVATE}
+
+GIT_DIR_="$(git rev-parse --show-toplevel)"
+$GIT_DIR_/utils/update-common-ini.py
+fab -c "" -f $GIT_DIR_/fabfile.py git_pull_configs
+deactivate

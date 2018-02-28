@@ -1,0 +1,11 @@
+--- orig/yandex_tank_api/common.py	2015-12-14 20:12:51.499010030 +0300
++++ new/yandex_tank_api/common.py	2015-12-14 20:13:25.441018844 +0300
+@@ -63,7 +63,7 @@
+ ]
+ 
+ TEST_STAGE_ORDER = [stage for stage, _ in TEST_STAGE_ORDER_AND_DEPS]
+-TEST_STAGE_DEPS = {stage:dep for stage, dep in TEST_STAGE_ORDER_AND_DEPS}
++TEST_STAGE_DEPS = dict((stage, dep) for (stage, dep) in TEST_STAGE_ORDER_AND_DEPS)
+ 
+ 
+ 

@@ -1,0 +1,7 @@
+diff --git a/yandex_tank_api/__init__.py b/yandex_tank_api/__init__.py
+index ad3cf1d..769914a 100644
+--- a/yandex_tank_api/__init__.py
++++ b/yandex_tank_api/__init__.py
+@@ -1 +1,2 @@
+ __version__ = '0.0.11'
++__version__ = __version__ + '.post4'
