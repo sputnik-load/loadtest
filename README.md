@@ -1,2 +1,2 @@
 # loadtest
-Some useful utilities, scenarios and scripts
+Some useful utilities, scenario examples and scripts
