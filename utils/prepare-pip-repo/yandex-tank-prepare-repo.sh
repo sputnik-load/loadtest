@@ -3,10 +3,10 @@
 
 PATCHREV='.post6'
 PYTHON=python2.7
-
+GITURL='https://github.com'
 
 function update_tank() {
-    git clone https://github.com/yandex/yandex-tank.git
+    git clone ${GITURL}/yandex/yandex-tank.git
     cd yandex-tank
     git reset --hard e1890687ef661de2d0388566c7a63b54e57c94c0 # временно фиксируемся на коммите от 16 фев 2016г - последний коммит перед началом глобальной переделки yandex-tank
     sed -i "s/version='\([\.0-9]*\)',/version='\1${PATCHREV}',/g" setup.py  # правим номер версии на Post-release N
@@ -18,7 +18,7 @@ function update_tank() {
 
 
 function update_tank_api() {
-    git clone https://github.com/yandex-load/yandex-tank-api.git
+    git clone ${GITURL}/yandex-load/yandex-tank-api.git
     cd yandex-tank-api
 #    git checkout dev ##OPTIONAL
     cat ../yandex-tank-api-patches/*.patch | patch -p1
@@ -29,7 +29,7 @@ function update_tank_api() {
 
 
 function update_tank_api_client() {
-    git clone https://github.com/yandex-load/yandex-tank-api-client.git
+    git clone ${GITURL}/yandex-load/yandex-tank-api-client.git
     cd yandex-tank-api-client
     #cat ../yandex-tank-api-client-patches/*.patch | patch -p1
     $PYTHON setup.py sdist upload -r internal
@@ -39,7 +39,7 @@ function update_tank_api_client() {
 
 
 function update_yatank_online() {
-    git clone https://github.com/yandex-load/yatank-online.git 
+    git clone ${GITURL}/yandex-load/yatank-online.git 
     cd yatank-online
     $PYTHON setup.py sdist upload -r internal
     cd ..
@@ -48,7 +48,7 @@ function update_yatank_online() {
 
 
 function update_django_qunit() {
-    git clone https://github.com/sputnik-load/django-qunit.git 
+    git clone ${GITURL}/sputnik-load/django-qunit.git 
     cd django-qunit 
     $PYTHON setup.py sdist upload -r internal
     cd ..
@@ -57,7 +57,7 @@ function update_django_qunit() {
 
 
 function update_yatank_report() {
-    git clone https://github.com/sputnik-load/yatank-report.git
+    git clone ${GITURL}/sputnik-load/yatank-report.git
     cd yatank-report
     pip2pi /data/qa/pypiserver/packages/ --index-url=https://pypi.python.org/simple/ --normalize-package-names -z -r requirements.txt
     $PYTHON setup.py sdist upload -r internal
@@ -67,7 +67,7 @@ function update_yatank_report() {
 
 
 function update_yatank_mail() {
-    git clone https://github.com/sputnik-load/yatank-mail.git
+    git clone ${GITURL}/sputnik-load/yatank-mail.git
     cd yatank-mail
     pip2pi /data/qa/pypiserver/packages/ --index-url=https://pypi.python.org/simple/ --normalize-package-names -z -r requirements.txt
     $PYTHON setup.py sdist upload -r internal
@@ -77,7 +77,7 @@ function update_yatank_mail() {
 
 
 function update_yatank_collect() {
-    git clone https://github.com/krylov/yatank-collect.git
+    git clone ${GITURL}/krylov/yatank-collect.git
     cd yatank-collect
     pip2pi /data/qa/pypiserver/packages/ --index-url=https://pypi.python.org/simple/ --normalize-package-names -z -r requirements.txt
     $PYTHON setup.py sdist upload -r internal
@@ -87,7 +87,7 @@ function update_yatank_collect() {
 
 
 function update_yatank_sputnikonline() {
-    git clone https://github.com/sputnik-load/yatank-sputnikonline.git
+    git clone ${GITURL}/sputnik-load/yatank-sputnikonline.git
     cd yatank-sputnikonline
     $PYTHON setup.py sdist upload -r internal
     cd ..
@@ -96,7 +96,7 @@ function update_yatank_sputnikonline() {
 
 
 function update_yatank_hipchat() {
-    git clone https://github.com/sputnik-load/yatank-hipchat.git
+    git clone ${GITURL}/sputnik-load/yatank-hipchat.git
     cd yatank-hipchat
     pip2pi /data/qa/pypiserver/packages/ --index-url=https://pypi.python.org/simple/ --normalize-package-names -z -r requirements.txt
     $PYTHON setup.py sdist upload -r internal
@@ -106,7 +106,7 @@ function update_yatank_hipchat() {
 
 
 function update_yatank_salts() {
-    git clone https://github.com/sputnik-load/yatank-salts.git
+    git clone ${GITURL}/sputnik-load/yatank-salts.git
     cd yatank-salts
     $PYTHON setup.py sdist upload -r internal
     cd ..
@@ -115,7 +115,7 @@ function update_yatank_salts() {
 
 
 function update_ammo() {
-    git clone https://github.com/maklaut/ammo
+    git clone ${GITURL}/maklaut/ammo
     cd ammo
     $PYTHON setup.py sdist upload -r internal
     cd ..
@@ -124,7 +124,7 @@ function update_ammo() {
 
 
 function update_runload() {
-    git clone https://github.com/sputnik-load/run-load.git
+    git clone ${GITURL}/sputnik-load/run-load.git
     cd run-load
     pip2pi /data/qa/pypiserver/packages/ --index-url=https://pypi.python.org/simple/ --normalize-package-names -z -r requirements.txt
     $PYTHON setup.py sdist upload -r internal
@@ -133,7 +133,7 @@ function update_runload() {
 }
 
 function update_salts_tank() {
-    git clone https://github.com/sputnik-load/salts-tank.git
+    git clone ${GITURL}/sputnik-load/salts-tank.git
     cd salts-tank
     pip2pi /data/qa/pypiserver/packages/ --index-url=https://pypi.python.org/simple/ --normalize-package-names -z -r requirements.txt
     $PYTHON setup.py sdist upload -r internal
@@ -142,7 +142,7 @@ function update_salts_tank() {
 }
 
 function update_yatank_graphite() {
-    git clone https://github.com/sputnik-load/yatank-graphite.git
+    git clone ${GITURL}/sputnik-load/yatank-graphite.git
     cd yatank-graphite
     pip2pi /data/qa/pypiserver/packages/ --index-url=https://pypi.python.org/simple/ --normalize-package-names -z -r requirements.txt
     $PYTHON setup.py sdist upload -r internal
@@ -151,7 +151,7 @@ function update_yatank_graphite() {
 }
 
 function update_yatank_vegeta() {
-    git clone https://github.com/sputnik-load/yatank-vegeta.git
+    git clone ${GITURL}/sputnik-load/yatank-vegeta.git
     cd yatank-vegeta
     pip2pi /data/qa/pypiserver/packages/ --index-url=https://pypi.python.org/simple/ --normalize-package-names -z -r requirements.txt
     $PYTHON setup.py sdist upload -r internal
