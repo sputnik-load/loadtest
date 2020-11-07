@@ -1,6 +1,6 @@
 TornadIO2==0.0.4
 hypchat==0.15
-Jinja2==2.8
+Jinja2==2.10.1
 yatank-hipchat==0.1.0.4
 yatank-salts==0.1.4.1
 yatank-report==0.2.2.2
