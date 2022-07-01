@@ -21,7 +21,7 @@ simplejson==3.8.2
 six==1.10.0
 slumber==0.7.1
 sqlalchemy>=1.3.0
-supervisor==3.3.1
+supervisor==3.3.3
 termcolor==1.1.0
 tornadio2==0.0.4
 tornado==4.0.0
